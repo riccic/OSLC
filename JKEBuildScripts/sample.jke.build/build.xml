@@ -1,0 +1,237 @@
+<!--
+/*******************************************************************************
+ * Licensed Materials - Property of IBM
+ * (c) Copyright IBM Corporation 2010. All Rights Reserved. 
+ * 
+ * Note to U.S. Government Users Restricted Rights:  Use, 
+ * duplication or disclosure restricted by GSA ADP Schedule 
+ * Contract with IBM Corp.
+ *******************************************************************************/
+-->
+<!--
+This example is used to build the JKE sample application.
+-->
+
+<project name="Build and test the JKE sample application" default="all">
+	<property name="userId" value="build" />
+	<property name="password" value="build" />
+
+	<target name="all"
+		depends="compile" /> 
+
+	<target name="compile">
+		<startBuildActivity
+			activityIdProperty="compileActivity"
+			label="Compiling"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${userId}"
+			password="${password}" />
+		
+		<property name="loadDir" value="${basedir}/../.." />
+		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" />
+		<property name="build.debuglevel" value="lines,vars,source"/> 
+		<property name="destdir" value="${loadDir}/build" />
+		<property name="destdir.bin" value="${loadDir}/build/bin" />
+		<property name="destdir.distro" value="${loadDir}/build/distro" />
+		<property name="destdir.distro.libs" value="${loadDir}/build/distro/libs" />
+		<property name="compilelog" value="${destdir}/compile.xml" />
+		
+		<echo message="loadDir=${loadDir}" />
+		
+		<delete dir="${destdir}" />
+		<mkdir dir="${destdir}" />
+		<mkdir dir="${destdir.bin}" />
+		<mkdir dir="${destdir.distro}" />
+		<mkdir dir="${destdir.distro.libs}" />
+		
+		<property name="applibsdir" value ="${loadDir}/JKEPrereqJars"/>
+		<property name="buildbatsdir" value ="${loadDir}/JKEBuildLibs/bats"/>
+		<property name="classpath" value="${applibsdir}/derby.jar;${applibsdir}/swt-win32-win32-x86/swt.jar;${applibsdir}/junit.jar;${applibsdir}/com.ibm.team.json_1.0.0.I200908182153.jar;${applibsdir}/org.mortbay.jetty.server_6.1.23.v201004211559.jar;${applibsdir}/org.mortbay.jetty.util_6.1.23.v201004211559.jar;${applibsdir}/javax.servlet_2.5.0.v200910301333.jar;"/>
+		<javac srcdir="${loadDir}" destdir="${destdir.bin}" classpath="${classpath}"
+			debug="on" nowarn="on" failonerror="false" source="1.5" target="1.5">
+			<compilerarg value="-log" /> 
+			<compilerarg value="${compilelog}" /> 			
+		</javac>
+		
+		<jdtCompileLogPublisher 
+					buildResultUUID="${buildResultUUID}"
+		            repositoryAddress="${repositoryAddress}"
+		            userId="${userId}"
+		            password="${password}"
+		            filePath="${compilelog}" />
+		
+		<copy todir="${destdir.bin}">
+					<fileset dir="${loadDir}/JKEDBAccess/src">
+						<include name="**/*.properties"/>
+					</fileset>
+		</copy>
+		
+		<startBuildActivity
+			activityIdProperty="testActivity"
+			label="Testing"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${userId}"
+			password="${password}" />
+
+		<mkdir dir="${destdir}/test.results"/>
+		<junit>
+			<classpath path="${classpath};${destdir.bin}"/>
+			<test name="com.jke.junit.AllTests"
+				todir="${destdir}/test.results"
+				outfile="jke.core.result">
+				<formatter type="xml" /> 
+			</test>
+		</junit>
+		
+		<junitResultPublisher
+			buildResultUUID="${buildResultUUID}"
+		 	repositoryAddress="${repositoryAddress}"
+		 	userId="${userId}"
+		 	password="${password}"
+		 	filePath="${destdir}/test.results/jke.core.result.xml"
+	 		verbose="true"
+	 		failOnError="false"	 	
+		/>
+		
+		<!--
+			Package things up and attach to the build result
+		-->
+		
+		<startBuildActivity
+			activityIdProperty="structure"
+			label="Creating output structure"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${userId}"
+			password="${password}" />
+		
+		<copy todir="${destdir.bin}">
+			<fileset dir="${loadDir}/JKEJavaUI/src">
+				<include name="**/*.gif"/>
+				<include name="**/*.png"/>
+				<include name="**/*.jpg"/>
+				<include name="**/*.bmp"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${destdir.distro.libs}">
+			<fileset dir="${applibsdir}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${destdir.distro.libs}">
+			<dirset dir="${applibsdir}">
+				<include name="swt*"/>
+			</dirset>
+		</copy>
+		
+		<copy todir="${destdir.distro}">
+			<fileset dir="${loadDir}/JKEBuildScripts/start">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		
+		<chmod dir="${destdir.distro}" perm="ugo+rx" includes="**/*.sh"/>
+		
+		<copy todir="${destdir.distro}/web">
+			<fileset dir="${loadDir}/JKEWebUI/WebContent">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+
+		<startBuildActivity
+			activityIdProperty="createJar"
+			label="Creating Jar file"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${userId}"
+			password="${password}" />				
+
+		<jar
+			destfile="${destdir.distro}/jke.jar"			
+			basedir="${destdir.bin}">
+			<manifest>
+				<attribute name="Built-By" value="Sample Build User"/>
+				<attribute name="Main-class" value="com.jke.ui.JKEBanking"/>
+			</manifest>
+		</jar>  
+		
+		<startBuildActivity
+			activityIdProperty="zip"
+			label="Creating final packaging file"
+			autoComplete="true"	
+			buildResultUUID="${buildResultUUID}"
+			repositoryAddress="${repositoryAddress}"
+			userId="${userId}"
+			password="${password}" />
+		
+		<zip
+			basedir="${destdir.distro}"
+			destfile="${destdir}/jke-${buildLabel}.zip"
+			excludes="*.zip"/>
+
+		<artifactPublisher
+			userId="${userId}"
+			password="${password}"
+			repositoryAddress="${repositoryAddress}"
+			buildResultUUID="${buildResultUUID}"
+			verbose="true"
+			filePath="${destdir}/jke-${buildLabel}.zip"
+			label="JKE Banking Business Recovery that Matters (all platforms)" />		
+	</target>
+	
+	<!-- These task definitions make the Jazz ant tasks available to this build file.
+	     In order to find these classnames at run time, ant must be invoked with:
+
+		     -lib <buildsystem-location>/buildtoolkit
+	 -->
+	<taskdef name="artifactPublisher"
+	         classname="com.ibm.team.build.ant.task.ArtifactFilePublisherTask" />
+
+	<taskdef name="artifactLinkPublisher"
+	         classname="com.ibm.team.build.ant.task.ArtifactLinkPublisherTask" />
+
+	<taskdef name="buildResultPublisher"
+	         classname="com.ibm.team.build.ant.task.BuildResultPublisherTask" />
+
+	<taskdef name="filePublisher"
+	         classname="com.ibm.team.build.ant.task.FilePublisherTask" />
+
+	<taskdef name="jdtCompileLogPublisher"
+	         classname="com.ibm.team.build.ant.task.JdtCompileLogPublisherTask" />
+
+	<taskdef name="junitLogPublisher"
+	         classname="com.ibm.team.build.ant.task.JUnitLogPublisherTask" />
+
+	<taskdef name="junitResultPublisher"
+		        classname="com.ibm.team.build.ant.task.JUnitLogPublisherTask"/>	
+	
+	<taskdef name="linkPublisher"
+	         classname="com.ibm.team.build.ant.task.LinkPublisherTask" />
+
+	<taskdef name="logPublisher"
+	         classname="com.ibm.team.build.ant.task.LogPublisherTask" />
+
+	<taskdef name="teamAccept"
+	         classname="com.ibm.team.build.ant.task.TeamAcceptTask"/>
+
+	<taskdef name="teamFetch"
+	         classname="com.ibm.team.build.ant.task.TeamFetchTask"/>
+
+	<taskdef name="workItemPublisher"
+	         classname="com.ibm.team.build.ant.task.WorkItemPublisherTask"/>
+
+   	<taskdef name="startBuildActivity"
+  	         classname="com.ibm.team.build.ant.task.StartBuildActivityTask" />
+
+   	<taskdef name="completeBuildActivity"
+   	         classname="com.ibm.team.build.ant.task.CompleteBuildActivityTask" />
+
+</project>	

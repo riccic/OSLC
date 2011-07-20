@@ -1,0 +1,9 @@
+#Mon Aug 02 14:36:20 EDT 2010
+dojo-root=http\://o.aolcdn.com/dojo/1.4.1/
+dojo-bootstrap-js=dojo/dojo.xd.js
+dojo-css=dojo/resources/dojo.css
+eclipse.preferences.version=1
+dojo-type-attribute-name=dojotype
+dojo-dijit-css=dijit/themes/dijit.css
+dojo-source-metadata-root=/D\:/Program Files/IBM/SDPShared/plugins/com.ibm.etools.webtools.dojo.distributions_1.0.0.v20100518_1610/resources/1.4.1.0/expanded/
+dojo-theme-css=dijit/themes/tundra/tundra.css

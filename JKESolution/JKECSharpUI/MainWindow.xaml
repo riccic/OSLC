@@ -1,0 +1,93 @@
+﻿<Window x:Class="JKECSharpUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:JKECSharpUI"
+    Title="JKE Banking" Height="400" Width="600" MinHeight="400" MinWidth="600" Icon="images\icon.jpg"
+    Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_JKE Banking">
+                <MenuItem Header="_Logout" IsEnabled="{Binding Path=IsLoggedIn}" Click="Logout_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Account Services">
+                <MenuItem Header="_Account Information">
+                    <MenuItem Header="Account _Summary" IsEnabled="{Binding Path=IsLoggedIn}" Click="Account_Summary_Click"/>
+                    <MenuItem Header="_Transaction History" IsEnabled="{Binding Path=IsLoggedIn}" Click="Transaction_History_Click"/>
+                    <MenuItem Header="Account _Profile" IsEnabled="False"/>
+                </MenuItem>
+                <MenuItem Header="_Services">
+                    <MenuItem Header="_Certificate of Deposit" IsEnabled="False"/>
+                    <MenuItem Header="_Open New Account" IsEnabled="False"/>
+                    <MenuItem Header="Close _Account" IsEnabled="False"/>
+                    <MenuItem Header="_Policy Change Request" IsEnabled="False"/>
+                    <MenuItem Header="Policy Change _Status" IsEnabled="False"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Money that Matters">
+                <MenuItem Header="_Dividend Contribution" IsEnabled="{Binding Path=IsLoggedIn}" Click="Dividend_Contribution_Click"/>
+            </MenuItem>
+            <MenuItem Header="_Financial Services">
+                <MenuItem Header="_Auto Loans" IsEnabled="False"/>
+                <MenuItem Header="_Vacation Home Finance" IsEnabled="False"/>
+                <MenuItem Header="_Today's Rates" IsEnabled="False"/>
+                <MenuItem Header="_Refinancing" IsEnabled="False"/>
+                <MenuItem Header="_Mortgage Details" IsEnabled="False"/>
+                <MenuItem Header="_Home Equity Lines" IsEnabled="False"/>
+                <MenuItem Header="Am_ortization" IsEnabled="False"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel DockPanel.Dock="Top">
+            <Grid>
+                <Image Name="BannerImage" Source="images\jke_banner.png" Stretch="None"/>
+                <Border Height="{Binding ElementName=BannerImage, Path=ActualHeight}"
+                        Width="{Binding ElementName=BannerImage, Path=ActualWidth}">
+                    <TextBlock Name="NameText" Margin="0,5,20,0" FontWeight="Bold"
+                               HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                </Border>
+            </Grid>
+            <Border Height="10"/>
+        </StackPanel>
+        <Grid Name="FillGrid">
+            <Grid Name="AccountAccessGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:AccountAccessControl x:Name="AccountAccessControl" Grid.Column="1"/>
+            </Grid>
+            <Grid Name="AccountsOverviewGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:AccountsOverviewControl x:Name="AccountsOverviewControl" Grid.Column="1"/>
+            </Grid>
+            <Grid Name="AccountDetailsGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:AccountDetailsControl x:Name="AccountDetailsControl" Grid.Column="1"/>
+            </Grid>
+            <Grid Name="TransactionsGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:TransactionsControl x:Name="TransactionsControl" Grid.Column="1"/>
+            </Grid>
+            <Grid Name="AllocateGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Frame Name="NavigationFrame" Grid.Column="1" NavigationUIVisibility="Hidden"/>
+            </Grid>
+        </Grid>
+    </DockPanel>
+</Window>

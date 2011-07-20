@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestLists xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2006">
+  <TestList name="Lists of Tests" id="8c43106b-9dc1-4907-a29f-aa66a61bf5b6" />
+  <TestList name="All Tests" id="f0fd615f-c1bf-4017-9d61-5a12f673f5ed" parentListId="8c43106b-9dc1-4907-a29f-aa66a61bf5b6">
+    <TestLinks>
+      <TestLink id="0acb52a1-2ca7-ef4e-9b7c-013fcb4ca0a0" name="GetOrganizationsTest" storage="jkeservicetests\bin\release\jkeservicetests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="65f1e05b-2143-3146-07d3-f49704f15832" name="GetTransactionsForAccountTest" storage="jkeservicetests\bin\release\jkeservicetests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="283e8def-a91e-5e2d-d06e-89bf64db8522" name="GetTransactionPreviewTest" storage="jkeservicetests\bin\release\jkeservicetests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="ef79433f-832a-7531-72e3-5120620caa60" name="GetUserResourceTest" storage="jkeservicetests\bin\release\jkeservicetests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="9dca9e6a-3e2e-e1de-9956-f87865ce48c0" name="GetUserAccountsTest" storage="jkeservicetests\bin\release\jkeservicetests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+      <TestLink id="b2b84a28-7a76-80f0-f3db-4b2e47faa425" name="PostTransactionTest" storage="jkeservicetests\bin\release\jkeservicetests.dll" type="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestElement, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.ObjectModel,   PublicKeyToken=b03f5f7f11d50a3a" />
+    </TestLinks>
+  </TestList>
+</TestLists>

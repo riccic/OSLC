@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEBusinessLogic"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEDBAccess"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEBusinessData"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEPrereqJars"/>
+	<classpathentry kind="lib" path="/JKEPrereqJars/com.ibm.team.json_1.0.0.I200908182153.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

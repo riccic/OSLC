@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JKEBusinessData_2008", "JKEBusinessData\JKEBusinessData_2008.csproj", "{6958CA05-D03F-443A-B6D0-5EA96488FC38}"
+	GlobalSection(JazzSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+		SolutionBindings = <Solution Location In Database>
+	EndGlobalSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JKECSharpUI_2008", "JKECSharpUI\JKECSharpUI_2008.csproj", "{A85DF069-8DE3-4C67-8704-FBBDEDD2FD2E}"
+	GlobalSection(JazzSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+		SolutionBindings = <Solution Location In Database>
+	EndGlobalSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JKEService_2008", "JKEService\JKEService_2008.csproj", "{5D3137FE-2801-4EA8-8C96-983774125B05}"
+	GlobalSection(JazzSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+		SolutionBindings = <Solution Location In Database>
+	EndGlobalSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2B9424EC-712D-4FB7-AC52-3D9FBAD24A5F}"
+	GlobalSection(JazzSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+		SolutionBindings = <Solution Location In Database>
+	EndGlobalSection
+	ProjectSection(SolutionItems) = preProject
+		JKESolution_2008.vsmdi = JKESolution_2008.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JKEServiceTests_2008", "JKEServiceTests\JKEServiceTests_2008.csproj", "{71DCD716-E2F3-4DE8-8EFE-FCEF6D994201}"
+	GlobalSection(JazzSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+		SolutionBindings = <Solution Location In Database>
+	EndGlobalSection
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = JKESolution_2008.vsmdi
+	EndGlobalSection
+	GlobalSection(JazzSourceControlProviderSolutionProperties) = preSolution
+		SolutionIsControlled = True
+		SolutionBindings = <Solution Location In Database>
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6958CA05-D03F-443A-B6D0-5EA96488FC38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6958CA05-D03F-443A-B6D0-5EA96488FC38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6958CA05-D03F-443A-B6D0-5EA96488FC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6958CA05-D03F-443A-B6D0-5EA96488FC38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A85DF069-8DE3-4C67-8704-FBBDEDD2FD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A85DF069-8DE3-4C67-8704-FBBDEDD2FD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A85DF069-8DE3-4C67-8704-FBBDEDD2FD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A85DF069-8DE3-4C67-8704-FBBDEDD2FD2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D3137FE-2801-4EA8-8C96-983774125B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3137FE-2801-4EA8-8C96-983774125B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3137FE-2801-4EA8-8C96-983774125B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3137FE-2801-4EA8-8C96-983774125B05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71DCD716-E2F3-4DE8-8EFE-FCEF6D994201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DCD716-E2F3-4DE8-8EFE-FCEF6D994201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DCD716-E2F3-4DE8-8EFE-FCEF6D994201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71DCD716-E2F3-4DE8-8EFE-FCEF6D994201}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

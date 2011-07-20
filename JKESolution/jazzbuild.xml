@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="jazz build targets" default="startActivity">
+  <property name="userId" value="build"/>
+  <property name="password" value="build"/>
+  <import file="${toolKitPath}\\BuildToolkitTaskDefs.xml"/>
+	
+  <target name="startActivity">
+    <startBuildActivity repositoryAddress="${repositoryAddress}"
+	    userId="${userId}"
+	  	password="${password}"
+	    activityIdProperty="buildactivityId"
+	    label="${activityLabel}"
+	    autoComplete="true"
+	    verbose="true"
+	    buildResultUUID="${buildResultUUID}" />
+  </target>
+
+  <target name="publishActivity">
+    <tstamp/>
+  	
+    <startBuildActivity
+        buildResultUUID="${buildResultUUID}"
+        label="${activityLabel}"
+        autoComplete="true"
+        repositoryAddress="${repositoryAddress}"
+        userId="${userId}"
+        password="${password}"/>
+  	
+  	<zip destfile="${team.scm.fetchDestination}\\JKESolution\\JKECSharpUI\\bin\\Release\\jke-client-${buildLabel}.zip"
+  	     basedir="${team.scm.fetchDestination}\\JKESolution\\JKECSharpUI\\bin\\Release"
+  	     update="true"/>
+  	
+  	<artifactFilePublisher repositoryAddress="${repositoryAddress}"
+    	userId="${userId}"
+  		password="${password}"
+      buildResultUUID="${buildResultUUID}"
+    	filePath="${team.scm.fetchDestination}\\JKESolution\\JKECSharpUI\\bin\\Release\\jke-client-${buildLabel}.zip"
+      label="JKE Banking Business Recovery that Matters (C# Client)"/>
+  </target>
+</project>

@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="JKECSharpUI.TransactionsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" Grid.Row="0"
+                   FontSize="12" FontWeight="Bold">Transactions</TextBlock>
+        <TextBlock Name="AccountTextBlock" Grid.Row="2" FontWeight="Bold" Text="{Binding Path=Account.TypeName}"/>
+        <Grid Name="SelectAccountGrid" Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock FontWeight="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">Please select an Account from the list:</TextBlock>
+            <ComboBox Name="AccountsComboBox" Grid.Row="1" Grid.Column="0" SelectionChanged="AccountsComboBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding TypeName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </Grid>
+        <ListView Grid.Row="4" ItemsSource="{Binding Path=Transactions}" SelectionMode="Single">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=TransactionID}"/>
+                    <GridViewColumn Header="Type" DisplayMemberBinding="{Binding Path=TransactionType}"/>
+                    <GridViewColumn Header="Source" DisplayMemberBinding="{Binding Path=Source}"/>
+                    <GridViewColumn Header="Amount">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextAlignment="Right" Text="{Binding Path=Amount, StringFormat='${0:N2}'}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Remaining Balance">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextAlignment="Right" Text="{Binding Path=PostBalance, StringFormat='${0:N2}'}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Path=Date}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

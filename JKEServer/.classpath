@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEPrereqJars"/>
+	<classpathentry kind="lib" path="/JKEPrereqJars/javax.servlet_2.5.0.v200910301333.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEBusinessLogic"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEDBAccess"/>
+	<classpathentry kind="lib" path="/JKEPrereqJars/com.ibm.team.json_1.0.0.I200908182153.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JKEBusinessData"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/JKEPrereqJars/org.mortbay.jetty.server_6.1.23.v201004211559.jar"/>
+	<classpathentry kind="lib" path="/JKEPrereqJars/org.mortbay.jetty.util_6.1.23.v201004211559.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

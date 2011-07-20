@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="JKECSharpUI.AccountDetailsControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="12" FontWeight="Bold" Margin="0,0,0,20">Accounts Details</TextBlock>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+            <TextBlock FontWeight="Bold" Text="{Binding Path=TypeName}"/>
+            <TextBlock FontWeight="Bold" Text="{Binding Path=AccountNumber, StringFormat=' - \{0\}'}"/>
+        </StackPanel>
+        <Border BorderThickness="1" BorderBrush="DarkGray" Padding="10,10,10,10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0">Balance:</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="0">Dividends earned this period:</TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="0">Dividends earned to date:</TextBlock>
+                <TextBlock Grid.Row="6" Grid.Column="0">Dividents contributed this period:</TextBlock>
+                <TextBlock Grid.Row="8" Grid.Column="0">Dividends contributed to date:</TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="1" TextAlignment="Right" Text="{Binding Path=Balance, StringFormat='${0:N2}'}"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" TextAlignment="Right" Text="{Binding Path=Dividends, StringFormat='${0:N2}'}"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" TextAlignment="Right" Text="{Binding Path=DividendsETD, StringFormat='${0:N2}'}"/>
+                <TextBlock Grid.Row="6" Grid.Column="1" TextAlignment="Right" Text="{Binding Path=Contributions, StringFormat='${0:N2}'}"/>
+                <TextBlock Grid.Row="8" Grid.Column="1" TextAlignment="Right" Text="{Binding Path=ContributionsETD, StringFormat='${0:N2}'}"/>
+            </Grid>
+        </Border>
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+            <Button Margin="0,0,5,0" Click="Transaction_History_Click">Transaction History</Button>
+            <Button Click="Allocate_Percentage_Click">Allocated Dividend Percentage</Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

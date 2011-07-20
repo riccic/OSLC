@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="derby.jar"/>
+	<classpathentry kind="lib" path="swt-cocoa-macosx/swt.jar"/>
+	<classpathentry kind="lib" path="swt-gtk-linux-x86/swt.jar"/>
+	<classpathentry kind="lib" path="swt-cocoa-macosx-x86_64/swt.jar"/>
+	<classpathentry kind="lib" path="swt-gtk-linux-x86_64/swt.jar"/>
+	<classpathentry kind="lib" path="swt-win32-win32-x86/swt.jar"/>
+	<classpathentry kind="lib" path="swt-win32-win32-x86_64/swt.jar"/>
+	<classpathentry kind="lib" path="org.mortbay.jetty.server_6.1.23.v201004211559.jar"/>
+	<classpathentry kind="lib" path="org.mortbay.jetty.util_6.1.23.v201004211559.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

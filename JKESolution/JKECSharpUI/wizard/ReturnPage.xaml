@@ -1,0 +1,19 @@
+﻿<PageFunction
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wizard="clr-namespace:JKECSharpUI.wizard" 
+    x:Class="JKECSharpUI.wizard.ReturnPage"
+    x:TypeArguments="wizard:WizardResult"
+    KeepAlive="True">
+    <StackPanel>
+        <TextBlock HorizontalAlignment="Center"
+                   FontSize="12" FontWeight="Bold" Margin="0,0,0,20">Money that Matters</TextBlock>
+        <WrapPanel Orientation="Horizontal" Margin="0,0,0,15">
+            <TextBlock Text="{Binding Path=Organization.Name, StringFormat='Thank you for your donation to \{0\}. '}"/>
+            <TextBlock Text="{Binding Path=Transaction.TransactionID, StringFormat='Your transaction number is \{0\}.'}"/>
+        </WrapPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="finishButton" Click="finishButton_Click" Width="50" Margin="5,0,0,0" IsDefault="True">_Return</Button>
+        </StackPanel>
+    </StackPanel>
+</PageFunction>
