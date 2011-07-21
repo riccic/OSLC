@@ -5,6 +5,8 @@
  * Note to U.S. Government Users Restricted Rights:  Use, 
  * duplication or disclosure restricted by GSA ADP Schedule 
  * Contract with IBM Corp.
+ * 
+ * some comment chnages
  *******************************************************************************/
 
 package com.jke.beans;
